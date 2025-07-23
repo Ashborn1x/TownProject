@@ -1,0 +1,12 @@
+/* src/assets/fade-helper.css */
+.fade-out-on-scroll {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-out-on-scroll.aos-animate[data-aos="fade-up"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-aos="fade-up"]:not(.aos-animate) {
+  opacity: 0;
+  transform: translateY(50px);
+}
