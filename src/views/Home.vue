@@ -1,4 +1,5 @@
 <template>
+  <!-- 🔹 HERO SECTION ONLY -->
   <section
     class="min-h-screen bg-cover bg-center text-white font-sans relative pt-20"
     style="background-image: url('/images/carbin.jpg')"
@@ -10,9 +11,10 @@
         Explore the beauty, history, and spirit of our hometown in Northern Negros Occidental.
       </p>
     </div>
+  </section>
 
-    <div class="relative z-10 bg-white text-gray-800 px-6 py-16 space-y-32">
-<section class="max-w-5xl mx-auto text-center fade-in">
+<div class="relative z-10 text-gray-800 px-6 py-16 space-y-32 bg-neutral-50">
+  <section class="max-w-5xl mx-auto text-center fade-in">
     <h2 class="text-3xl font-bold text-blue-700 mb-8">Elected Officials</h2>
 
     <Splide
@@ -82,7 +84,7 @@
         </div>
       </section>
     </div>
-  </section>
+
 <!-- 🔹 Plans, Programs & Projects -->
   <section class="max-w-6xl mx-auto text-center fade-in">
     <h2 class="text-3xl font-bold text-indigo-700 mb-6">Plans, Programs & Projects</h2>
@@ -105,40 +107,55 @@
     </div>
   </section>
 
-<!-- 🔹 Hotlines & Emails -->
-<section class="max-w-5xl mx-auto text-center fade-in">
-  <h2 class="text-3xl font-bold text-red-700 mb-6">Hotlines & Emails</h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
-    <!-- City Hall -->
-    <div class="bg-white p-4 shadow border-l-4 border-red-600 rounded">
-      <h4 class="text-xl font-semibold text-red-700">City Hall</h4>
-      <p class="text-gray-700">📞 (034) 488-0641</p>
-      <p class="text-gray-700">✉️ cityhall@sagay.gov.ph</p>
+<!-- 🔹 Hotlines & Emails Section -->
+<section class="max-w-6xl mx-auto px-4 py-20 fade-in">
+  <h2 class="text-3xl font-bold text-center text-red-700 mb-12">Contact Us</h2>
+
+  <div class="flex flex-col md:flex-row gap-10">
+    <!-- 🔹 Contact Info -->
+    <div class="flex-1 bg-white shadow-md rounded-xl p-6 space-y-6">
+      <div class="space-y-4">
+        <h3 class="text-2xl font-semibold text-gray-800">City Hall</h3>
+        <div class="flex items-center space-x-3">
+          <i class="fas fa-phone text-red-600"></i>
+          <a href="tel:(034)488-0641" class="text-gray-700 hover:text-red-700">(034) 488-0641</a>
+        </div>
+        <div class="flex items-center space-x-3">
+          <i class="fas fa-envelope text-red-600"></i>
+          <a href="mailto:cityhall@sagay.gov.ph" class="text-gray-700 hover:text-red-700">cityhall@sagay.gov.ph</a>
+        </div>
+        <div class="flex items-center space-x-3">
+          <i class="fas fa-map-marker-alt text-red-600"></i>
+          <p class="text-gray-700">Rizal Street, Sagay City Hall</p>
+        </div>
+      </div>
+
+      <div class="border-t pt-4 space-y-4">
+        <h3 class="text-xl font-semibold text-gray-800">Socials</h3>
+        <div class="flex space-x-4">
+          <a href="https://facebook.com/sagaycity" target="_blank" class="text-blue-600 hover:text-blue-800">
+            <i class="fab fa-facebook fa-lg"></i>
+          </a>
+          <a href="mailto:info@sagay.gov.ph" class="text-red-600 hover:text-red-800">
+            <i class="fas fa-envelope fa-lg"></i>
+          </a>
+        </div>
+      </div>
     </div>
 
-    <!-- Health Office -->
-    <div class="bg-white p-4 shadow border-l-4 border-green-600 rounded">
-      <h4 class="text-xl font-semibold text-green-700">City Health Office</h4>
-      <p class="text-gray-700">📞 (034) 488-0120</p>
-      <p class="text-gray-700">✉️ health@sagay.gov.ph</p>
-    </div>
-
-    <!-- PNP -->
-    <div class="bg-white p-4 shadow border-l-4 border-blue-600 rounded">
-      <h4 class="text-xl font-semibold text-blue-700">Sagay PNP</h4>
-      <p class="text-gray-700">📞 0998-987-6543</p>
-      <p class="text-gray-700">✉️ pnp@sagay.gov.ph</p>
-    </div>
-
-    <!-- Bureau of Fire Protection -->
-    <div class="bg-white p-4 shadow border-l-4 border-yellow-500 rounded">
-      <h4 class="text-xl font-semibold text-yellow-700">Bureau of Fire Protection</h4>
-      <p class="text-gray-700">📞 0923-456-7890</p>
-      <p class="text-gray-700">✉️ fire@sagay.gov.ph</p>
+    <div class="flex-1">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d42502.86042733965!2d123.43411560085033!3d10.892401878895818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sph!4v1753276293856!5m2!1sen!2sph"
+        width="100%"
+        height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
     </div>
   </div>
 </section>
-
 </template>
 
 <script setup>
@@ -220,7 +237,6 @@ const projects = [
     image: '/images/project9.jpg',
   },
 ]
-
 </script>
 
 

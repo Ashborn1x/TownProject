@@ -6,3 +6,4 @@ Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://
 
 Updates:
 1.0: Added NavBars
+2.0: Added Home.vue and About.vue

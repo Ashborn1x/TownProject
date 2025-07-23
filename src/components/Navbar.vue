@@ -1,6 +1,6 @@
 <template>
-  <nav class="bg-white shadow-md px-4 py-3">
-    <div class="container mx-auto flex justify-between items-center">
+  <nav class="bg-white shadow-md px-4 py-3 sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center ">
       <!-- Logo -->
       <RouterLink to="/" class="flex items-center space-x-2">
         <img src="@/assets/logo.png" alt="Logo" class="h-10 w-10" />
