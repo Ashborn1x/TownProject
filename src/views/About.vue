@@ -1,7 +1,5 @@
 <template>
   <section class="max-w-4xl mx-auto p-6 text-gray-800 font-sans space-y-32 pt-20">
-
-    <!-- 🔹 About Sagay City -->
     <section
       data-aos="fade-up"
       data-aos-duration="1000"
@@ -25,9 +23,12 @@
       </div>
     </section>
     <section
-      data-aos="fade-right"
-      data-aos-duration="1000"
-      class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8 px-4"
+      id="cityhood"
+      class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8 px-4 transition-all duration-700 ease-out"
+      :class="{
+        'opacity-100 translate-x-0': showCityhood,
+        'opacity-0 -translate-x-10': !showCityhood
+      }"
     >
       <div class="md:w-1/2 h-48 bg-gray-200 rounded-lg shadow-md hidden md:block"></div>
 
@@ -44,11 +45,14 @@
       </div>
     </section>
 
-    <section
-      data-aos="fade-left"
-      data-aos-duration="1000"
-      class="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center gap-8 px-4"
-    >
+  <section
+    id="geography"
+    class="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center gap-8 px-4 transition-all duration-700 ease-out"
+    :class="{
+      'opacity-100 translate-x-0': showGeography,
+      'opacity-0 translate-x-10': !showGeography
+    }"
+  >
       <div class="md:w-1/2 text-left">
         <h2 class="text-2xl font-semibold text-blue-600 mb-2">Geography</h2>
         <p class="text-gray-700 leading-relaxed">
@@ -88,20 +92,28 @@
 import { ref, onMounted } from 'vue'
 
 const showAbout = ref(true)
+const showCityhood = ref(false)
+const showGeography = ref(false)
 
 onMounted(() => {
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      showAbout.value = entry.isIntersecting
-    },
-    {
-      threshold: 0.4,
-    }
-  )
+  const observeSection = (id, stateRef) => {
+    const el = document.querySelector(id)
+    if (!el) return
 
-  const el = document.querySelector('#about-sagay')
-  if (el) observer.observe(el)
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        stateRef.value = entry.isIntersecting
+      },
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+  }
+
+  observeSection('#about-sagay', showAbout)
+  observeSection('#cityhood', showCityhood)
+  observeSection('#geography', showGeography)
 })
+
 const barangays = [
   "Andres Bonifacio", "Bato", "Baviera", "Bulanon", "Campo Himoga-an",
   "Campo Santiago", "Colonia Divina", "Rafaela Barrera", "Fabrica", "General Luna",
