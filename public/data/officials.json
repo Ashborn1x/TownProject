@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Juan Dela Cruz",
+    "position": "Mayor",
+    "photo": "/images/mayor.jpg"
+  },
+  {
+    "name": "Maria Reyes",
+    "position": "Vice Mayor",
+    "photo": "/images/vice.jpg"
+  },
+  {
+    "name": "Councilor 1",
+    "position": "Councilor",
+    "photo": "/images/councilor1.jpg"
+  },
+  {
+    "name": "Councilor 2",
+    "position": "Councilor",
+    "photo": "/images/councilor2.jpg"
+  },
+  {
+    "name": "Councilor 3",
+    "position": "Councilor",
+    "photo": "/images/councilor3.jpg"
+  }
+]

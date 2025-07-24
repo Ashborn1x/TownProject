@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Flood Control Program",
+    "description": "Reinforcement of riverbanks and drainage expansion.",
+    "image": "/images/project1.jpg"
+  },
+  {
+    "title": "Tree Planting Initiative",
+    "description": "Greening schools and barangay zones.",
+    "image": "/images/project2.jpg"
+  },
+  {
+    "title": "Barangay Road Cementing",
+    "description": "Improved access in rural areas.",
+    "image": "/images/project3.jpg"
+  },
+  {
+    "title": "Public Market Renovation",
+    "description": "A modern, cleaner Sagay Market.",
+    "image": "/images/project4.jpg"
+  },
+  {
+    "title": "Scholarship Expansion",
+    "description": "More students supported in 2025.",
+    "image": "/images/project5.jpg"
+  },
+  {
+    "title": "Digital Barangay System",
+    "description": "Records and services go online.",
+    "image": "/images/project6.jpg"
+  },
+  {
+    "title": "Water Supply Project",
+    "description": "Improved access to clean water.",
+    "image": "/images/project7.jpg"
+  },
+  {
+    "title": "Women Empowerment Trainings",
+    "description": "Programs for skills and business.",
+    "image": "/images/project8.jpg"
+  },
+  {
+    "title": "Tourism Promotion Drive",
+    "description": "Highlighting Sagay’s landmarks.",
+    "image": "/images/project9.jpg"
+  }
+]

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
+// add other views as needed
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -9,7 +10,10 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
+  scrollBehavior() {
+    return { top: 0 }
+  }
 })
 
 export default router

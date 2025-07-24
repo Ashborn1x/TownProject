@@ -1,92 +1,96 @@
 <template>
-  <!-- 🔹 HERO SECTION ONLY -->
+<div class="bg-neutral-100 min-h-screen">
   <section
-    class="min-h-screen bg-cover bg-center text-white font-sans relative pt-20"
-    style="background-image: url('/images/carbin.jpg')"
+    ref="heroSection"
+    :class="[
+      'transition-opacity duration-700 ease-in-out',
+      isVisible ? 'opacity-100' : 'opacity-0'
+    ]"
+    class="relative bg-cover bg-center bg-no-repeat text-white min-h-screen flex flex-col justify-center items-center px-4"
+    style="background-image: url('/images/carbin-hd.webp')"
   >
-    <div class="absolute inset-0 bg-black/60 z-0"></div>
-    <div class="relative z-10 flex flex-col justify-center items-center text-center min-h-screen px-4 fade-in">
-      <h1 class="text-4xl md:text-5xl font-bold drop-shadow-md">Welcome to Sagay City</h1>
-      <p class="text-lg md:text-xl mt-4 max-w-2xl drop-shadow-sm">
+    <div class="text-center">
+      <h1 class="text-4xl md:text-5xl font-bold drop-shadow-lg">Welcome to Sagay City</h1>
+      <p class="text-lg md:text-xl mt-4 max-w-2xl mx-auto drop-shadow">
         Explore the beauty, history, and spirit of our hometown in Northern Negros Occidental.
       </p>
     </div>
   </section>
+  <div class="relative z-10 text-gray-800 px-6 py-16 space-y-32">
+    <!-- 🔹 Elected Officials -->
+    <section class="max-w-5xl mx-auto text-center fade-in px-4 py-16 rounded-lg shadow-sm">
+      <h2 class="text-3xl font-bold text-blue-700 mb-8">Elected Officials</h2>
 
-<div class="relative z-10 text-gray-800 px-6 py-16 space-y-32 bg-neutral-50">
-  <section class="max-w-5xl mx-auto text-center fade-in">
-    <h2 class="text-3xl font-bold text-blue-700 mb-8">Elected Officials</h2>
+      <Splide
+        :options="{
+          type: 'loop',
+          perPage: 3,
+          perMove: 1,
+          gap: '1rem',
+          autoplay: true,
+          pauseOnHover: true,
+          breakpoints: {
+            1024: { perPage: 2 },
+            640: { perPage: 1 },
+          },
+        }"
+        class="px-4"
+      >
+        <SplideSlide v-for="official in officials" :key="official.name">
+          <div class="p-6 rounded-xl shadow-md text-center">
+            <img
+              :src="official.photo"
+              alt="Official"
+              class="w-24 h-24 mx-auto rounded-full object-cover mb-4"
+            />
+            <h3 class="text-xl font-semibold text-gray-800">{{ official.name }}</h3>
+            <p class="text-gray-600">{{ official.position }}</p>
+          </div>
+        </SplideSlide>
+      </Splide>
+    </section>
 
-    <Splide
-      :options="{
-        type: 'loop',
-        perPage: 3,
-        perMove: 1,
-        gap: '1rem',
-        autoplay: true,
-        pauseOnHover: true,
-        breakpoints: {
-          1024: { perPage: 2 },
-          640: { perPage: 1 },
-        },
-      }"
-      class="px-4"
-    >
-      <SplideSlide v-for="official in officials" :key="official.name">
-        <div class="bg-white p-6 rounded-xl shadow-md text-center">
-          <img
-            :src="official.photo"
-            alt="Official"
-            class="w-24 h-24 mx-auto rounded-full object-cover mb-4"
-          />
-          <h3 class="text-xl font-semibold text-gray-800">{{ official.name }}</h3>
-          <p class="text-gray-600">{{ official.position }}</p>
+    <!-- 🔹 City Officials -->
+    <section class="max-w-5xl mx-auto text-center fade-in px-4 py-16">
+      <h2 class="text-3xl font-bold text-green-700 mb-6">City Officials</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="p-4 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold">Engr. Pedro Santos</h3>
+          <p class="text-gray-600">City Engineer</p>
         </div>
-      </SplideSlide>
-    </Splide>
-  </section>
-
-      <!-- 🔹 Other City Officials -->
-      <section class="max-w-5xl mx-auto text-center fade-in">
-        <h2 class="text-3xl font-bold text-green-700 mb-6">City Officials</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <div class="bg-gray-100 p-4 rounded-lg shadow-md">
-            <h3 class="text-xl font-semibold">Engr. Pedro Santos</h3>
-            <p class="text-gray-600">City Engineer</p>
-          </div>
-          <div class="bg-gray-100 p-4 rounded-lg shadow-md">
-            <h3 class="text-xl font-semibold">Dr. Carla Mendoza</h3>
-            <p class="text-gray-600">City Health Officer</p>
-          </div>
-          <div class="bg-gray-100 p-4 rounded-lg shadow-md">
-            <h3 class="text-xl font-semibold">Atty. Luis Navarro</h3>
-            <p class="text-gray-600">City Legal Officer</p>
-          </div>
+        <div class="p-4 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold">Dr. Carla Mendoza</h3>
+          <p class="text-gray-600">City Health Officer</p>
         </div>
-      </section>
-
-      <!-- 🔹 Announcements & Articles -->
-      <section class="max-w-5xl mx-auto text-center fade-in">
-        <h2 class="text-3xl font-bold text-purple-700 mb-6">Announcements & Articles</h2>
-        <div class="space-y-6 text-left">
-          <div class="bg-white border-l-4 border-blue-600 p-4 shadow">
-            <h4 class="text-xl font-semibold text-blue-700">Upcoming Festival: Sinigayan 2025</h4>
-            <p class="text-gray-600 mt-2">Join us in celebrating Sagay’s culture and creativity this coming March!</p>
-          </div>
-          <div class="bg-white border-l-4 border-green-600 p-4 shadow">
-            <h4 class="text-xl font-semibold text-green-700">Health Advisory</h4>
-            <p class="text-gray-600 mt-2">COVID-19 vaccinations are ongoing at the City Health Office from Mon-Fri.</p>
-          </div>
-          <div class="bg-white border-l-4 border-yellow-500 p-4 shadow">
-            <h4 class="text-xl font-semibold text-yellow-600">Public Service Update</h4>
-            <p class="text-gray-600 mt-2">New garbage collection schedule effective August 1st.</p>
-          </div>
+        <div class="p-4 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold">Atty. Luis Navarro</h3>
+          <p class="text-gray-600">City Legal Officer</p>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
-<!-- 🔹 Plans, Programs & Projects -->
-  <section class="max-w-6xl mx-auto text-center fade-in">
+    <!-- 🔹 Announcements -->
+    <section class="max-w-5xl mx-auto text-center fade-in px-4 py-16">
+      <h2 class="text-3xl font-bold text-purple-700 mb-6">Announcements & Articles</h2>
+      <div class="space-y-6 text-left">
+        <div class="border-l-4 border-blue-600 p-4 shadow">
+          <h4 class="text-xl font-semibold text-blue-700">Upcoming Festival: Sinigayan 2025</h4>
+          <p class="text-gray-600 mt-2">Join us in celebrating Sagay’s culture and creativity this coming March!</p>
+        </div>
+        <div class="border-l-4 border-green-600 p-4 shadow">
+          <h4 class="text-xl font-semibold text-green-700">Health Advisory</h4>
+          <p class="text-gray-600 mt-2">COVID-19 vaccinations are ongoing at the City Health Office from Mon-Fri.</p>
+        </div>
+        <div class="border-l-4 border-yellow-500 p-4 shadow">
+          <h4 class="text-xl font-semibold text-yellow-600">Public Service Update</h4>
+          <p class="text-gray-600 mt-2">New garbage collection schedule effective August 1st.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 🔹 Plans, Programs & Projects -->
+  <section class="max-w-6xl mx-auto text-center fade-in px-4 py-16">
     <h2 class="text-3xl font-bold text-indigo-700 mb-6">Plans, Programs & Projects</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       <div
@@ -99,7 +103,7 @@
           :alt="project.title"
           class="w-full h-48 object-cover"
         />
-        <div class="p-4 bg-white text-left">
+        <div class="p-4 text-left">
           <h3 class="text-lg font-semibold text-gray-800">{{ project.title }}</h3>
           <p class="text-sm text-gray-600 mt-2">{{ project.description }}</p>
         </div>
@@ -107,136 +111,96 @@
     </div>
   </section>
 
-<!-- 🔹 Hotlines & Emails Section -->
-<section class="max-w-6xl mx-auto px-4 py-20 fade-in">
-  <h2 class="text-3xl font-bold text-center text-red-700 mb-12">Contact Us</h2>
+  <!-- 🔹 Contact Section -->
+  <section class="max-w-6xl mx-auto px-4 py-20 fade-in">
+    <h2 class="text-3xl font-bold text-center text-red-700 mb-12">Contact Us</h2>
 
-  <div class="flex flex-col md:flex-row gap-10">
-    <!-- 🔹 Contact Info -->
-    <div class="flex-1 bg-white shadow-md rounded-xl p-6 space-y-6">
-      <div class="space-y-4">
-        <h3 class="text-2xl font-semibold text-gray-800">City Hall</h3>
-        <div class="flex items-center space-x-3">
-          <i class="fas fa-phone text-red-600"></i>
-          <a href="tel:(034)488-0641" class="text-gray-700 hover:text-red-700">(034) 488-0641</a>
+    <div class="flex flex-col md:flex-row gap-10">
+      <div class="flex-1 shadow-md rounded-xl p-6 space-y-6">
+        <div class="space-y-4">
+          <h3 class="text-2xl font-semibold text-gray-800">City Hall</h3>
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-phone text-red-600"></i>
+            <a href="tel:(034)488-0641" class="text-gray-700 hover:text-red-700">(034) 488-0641</a>
+          </div>
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-envelope text-red-600"></i>
+            <a href="mailto:cityhall@sagay.gov.ph" class="text-gray-700 hover:text-red-700">cityhall@sagay.gov.ph</a>
+          </div>
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-map-marker-alt text-red-600"></i>
+            <p class="text-gray-700">Rizal Street, Sagay City Hall</p>
+          </div>
         </div>
-        <div class="flex items-center space-x-3">
-          <i class="fas fa-envelope text-red-600"></i>
-          <a href="mailto:cityhall@sagay.gov.ph" class="text-gray-700 hover:text-red-700">cityhall@sagay.gov.ph</a>
-        </div>
-        <div class="flex items-center space-x-3">
-          <i class="fas fa-map-marker-alt text-red-600"></i>
-          <p class="text-gray-700">Rizal Street, Sagay City Hall</p>
+
+        <div class="border-t pt-4 space-y-4">
+          <h3 class="text-xl font-semibold text-gray-800">Socials</h3>
+          <div class="flex space-x-4">
+            <a href="https://facebook.com/sagaycity" target="_blank" class="text-blue-600 hover:text-blue-800">
+              <i class="fab fa-facebook fa-lg"></i>
+            </a>
+            <a href="mailto:info@sagay.gov.ph" class="text-red-600 hover:text-red-800">
+              <i class="fas fa-envelope fa-lg"></i>
+            </a>
+          </div>
         </div>
       </div>
 
-      <div class="border-t pt-4 space-y-4">
-        <h3 class="text-xl font-semibold text-gray-800">Socials</h3>
-        <div class="flex space-x-4">
-          <a href="https://facebook.com/sagaycity" target="_blank" class="text-blue-600 hover:text-blue-800">
-            <i class="fab fa-facebook fa-lg"></i>
-          </a>
-          <a href="mailto:info@sagay.gov.ph" class="text-red-600 hover:text-red-800">
-            <i class="fas fa-envelope fa-lg"></i>
-          </a>
-        </div>
+      <div class="flex-1">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d42502.86042733965!2d123.43411560085033!3d10.892401878895818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sph!4v1753276293856!5m2!1sen!2sph"
+          width="100%"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </div>
-
-    <div class="flex-1">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d42502.86042733965!2d123.43411560085033!3d10.892401878895818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sph!4v1753276293856!5m2!1sen!2sph"
-        width="100%"
-        height="450"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
-    </div>
-  </div>
-</section>
+  </section>
+</div>
 </template>
 
+
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
 import { Splide, SplideSlide } from '@splidejs/vue-splide'
 import '@splidejs/splide/dist/css/splide.min.css'
+const heroSection = ref(null)
+const isVisible = ref(true)
+const officials = ref([])
+const projects = ref([])
 
 
-const officials = [
-  {
-    name: 'Juan Dela Cruz',
-    position: 'Mayor',
-    photo: '/images/mayor.jpg',
-  },
-  {
-    name: 'Maria Reyes',
-    position: 'Vice Mayor',
-    photo: '/images/vice.jpg',
-  },
-  {
-    name: 'Councilor 1',
-    position: 'Councilor',
-    photo: '/images/councilor1.jpg',
-  },
-  {
-    name: 'Councilor 2',
-    position: 'Councilor',
-    photo: '/images/councilor2.jpg',
-  },
-  {
-    name: 'Councilor 3',
-    position: 'Councilor',
-    photo: '/images/councilor3.jpg',
-  },
-]
-const projects = [
-  {
-    title: 'Flood Control Program',
-    description: 'Reinforcement of riverbanks and drainage expansion.',
-    image: '/images/project1.jpg',
-  },
-  {
-    title: 'Tree Planting Initiative',
-    description: 'Greening schools and barangay zones.',
-    image: '/images/project2.jpg',
-  },
-  {
-    title: 'Barangay Road Cementing',
-    description: 'Improved access in rural areas.',
-    image: '/images/project3.jpg',
-  },
-  {
-    title: 'Public Market Renovation',
-    description: 'A modern, cleaner Sagay Market.',
-    image: '/images/project4.jpg',
-  },
-  {
-    title: 'Scholarship Expansion',
-    description: 'More students supported in 2025.',
-    image: '/images/project5.jpg',
-  },
-  {
-    title: 'Digital Barangay System',
-    description: 'Records and services go online.',
-    image: '/images/project6.jpg',
-  },
-  {
-    title: 'Water Supply Project',
-    description: 'Improved access to clean water.',
-    image: '/images/project7.jpg',
-  },
-  {
-    title: 'Women Empowerment Trainings',
-    description: 'Programs for skills and business.',
-    image: '/images/project8.jpg',
-  },
-  {
-    title: 'Tourism Promotion Drive',
-    description: 'Highlighting Sagay’s landmarks.',
-    image: '/images/project9.jpg',
-  },
-]
+const handleScroll = () => {
+  if (!heroSection.value) return
+  const sectionTop = heroSection.value.getBoundingClientRect().top
+  isVisible.value = sectionTop >= -800 // fades out when it scrolls too far up
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+
+const fetchData = async () => {
+  try {
+    const officialRes = await fetch('/data/officials.json')
+    officials.value = await officialRes.json()
+
+    const projectRes = await fetch('/data/projects.json')
+    projects.value = await projectRes.json()
+  } catch (err) {
+    console.error('Failed to fetch data:', err)
+  }
+}
+onMounted(() => {
+  fetchData()
+})
 </script>
 
 
@@ -253,5 +217,19 @@ const projects = [
     opacity: 1;
     transform: translateY(0);
   }
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1.2s ease-out both;
 }
 </style>
